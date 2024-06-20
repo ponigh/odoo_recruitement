@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Material"
+            id="menu_material_root"
+            groups="group_material_user,group_material_manager"
+            sequence="100"/>
+    <menuitem id="menu_material_parent" name="Material"
+            parent="menu_material_root" sequence="1" action="material_act_window"/>
+</odoo>

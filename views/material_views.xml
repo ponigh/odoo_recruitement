@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_material_form" model="ir.ui.view">
+        <field name="name">material.form</field>
+        <field name="model">material</field>
+        <field name="arch" type="xml">
+            <form string="Material">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="code" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="type"/>
+                            <field name="buy_price"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="partner_id"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_material_tree" model="ir.ui.view">
+        <field name="name">material.tree</field>
+        <field name="model">material</field>
+        <field name="arch" type="xml">
+            <tree string="Material">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="type"/>
+                <field name="buy_price"/>
+                <field name="partner_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_material_filter" model="ir.ui.view">
+        <field name="name">material.tree.search</field>
+        <field name="model">material</field>
+        <field name="arch" type="xml">
+            <search string="Search Material">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="type"/>
+                <field name="buy_price"/>
+                <field name="partner_id"/>
+                <filter name="material_fabric_filter" string="Fabric" domain="[('type', '=', 'fabric')]"/>
+                <filter name="material_fabric_filter" string="Jeans" domain="[('type', '=', 'jeans')]"/>
+                <filter name="material_fabric_filter" string="Cotton" domain="[('type', '=', 'cotton')]"/>
+            </search>
+        </field>
+    </record>
+    <record id="material_act_window" model="ir.actions.act_window">
+        <field name="name">Material Menu</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">material</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="search_view_id" ref="view_material_filter"/>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            No Material found. Let's create one!
+          </p>
+        </field>
+    </record>
+</odoo>
